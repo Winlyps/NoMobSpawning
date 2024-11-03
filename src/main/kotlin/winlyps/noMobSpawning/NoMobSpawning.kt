@@ -14,6 +14,9 @@ class NoMobSpawning : JavaPlugin() {
 
     override fun onDisable() {
         // Plugin shutdown logic
-        logger.info("NoMobSpawning plugin has been disabled.")
+        server.worlds.forEach { world ->
+            world.setGameRuleValue("doMobSpawning", "true")
+            logger.info("NoMobSpawning plugin has been disabled.")
+        }
     }
 }
